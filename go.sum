@@ -1,7 +1,3 @@
-github.com/deemount/gobpmnDiagram v0.0.0-20240228084542-d5aa3e526030 h1:JUW2Asc7lHZsRZRvTBOZq6EcMOMRoSdiJL7Mgg7jaGI=
-github.com/deemount/gobpmnDiagram v0.0.0-20240228084542-d5aa3e526030/go.mod h1:/7C8sWvN52YeOazqRnBKZOlbr9TJkmTnZEEcndxDcr8=
-github.com/deemount/gobpmnLab v0.0.0-20240229133515-9b9019ffe509 h1:xGLuYfXwm9+8xWiTEZVv8K/xQXdZcfJYGiUXm6jkLaw=
-github.com/deemount/gobpmnLab v0.0.0-20240229133515-9b9019ffe509/go.mod h1:srmgFRSB7oo/Y9ZLqICqYjnOAzgrn76wP7/SiGDyGnk=
 github.com/deemount/gobpmnModels v0.0.0-20240229105207-e3c75acd45e8 h1:cJvfj3LECefB1EfWzKMuVsXsU7f/t3HDdJQOMO5jDpA=
 github.com/deemount/gobpmnModels v0.0.0-20240229105207-e3c75acd45e8/go.mod h1:8HkFs9SEoVS0iCV/f6arOQesRWxSnjSO6m4e5Bk1S04=
 github.com/deemount/gobpmnTypes v0.0.0-20240228122426-16d080c21cc0 h1:iDxuMwNp14g0F8WSkEvZwFmmcBr93x5lIduYZVfcack=

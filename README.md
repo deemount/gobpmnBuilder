@@ -1,6 +1,6 @@
 # gobpmnBuilder
 
-**Note:** This repository is under construction
+**Note:** This module is under construction
 
 ## Wiki
 
@@ -21,4 +21,5 @@ You can also test the idea behind it directly. Simply follow the link to the lab
 + [gobpmnCamunda](https://github.com/deemount/gobpmnCamunda)
 + [gobpmnDiagram](https://github.com/deemount/gobpmnDiagram)
 + [gobpmnCounter](https://github.com/deemount/gobpmnCounter)
++ [gobpmnHash](https://github.com/deemount/gobpmnHash)
 + [gobpmnReflection](https://github.com/deemount/gobpmnReflection)

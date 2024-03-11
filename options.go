@@ -1,4 +1,4 @@
-package gobpmnBuilder
+package gobpmn_builder
 
 import "github.com/deemount/gobpmnModels/pkg/core"
 
