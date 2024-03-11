@@ -1,4 +1,4 @@
-package repository
+package gobpmnBuilder
 
 import (
 	"encoding/json"
@@ -6,11 +6,11 @@ import (
 )
 
 // toJSON ...
-func (bldr *builder) toJSON() error {
+func (bldr *Builder) toJSON() error {
 	var err error
 
 	// marshal json to byte slice
-	b, _ := json.MarshalIndent(&bldr.Repo, " ", "  ")
+	b, _ := json.MarshalIndent(&bldr.Options.Repo, " ", "  ")
 
 	// create .json file
 	f, err := os.Create("files/json/" + bldr.Options.CurrentFile + ".json")
