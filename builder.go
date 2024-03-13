@@ -6,6 +6,7 @@ import (
 	"os"
 	"reflect"
 
+	gobpmn_count "github.com/deemount/gobpmnCounter"
 	"github.com/deemount/gobpmnModels/pkg/core"
 )
 
@@ -24,7 +25,7 @@ type (
 		Build() (Builder, error)
 		SetDefinitions()
 		SetDefinitionsByArg(r core.DefinitionsRepository)
-		Defaults(p, c interface{})
+		Defaults(p interface{}, c *gobpmn_count.Quantities)
 		ToBPMN() error
 		GetCurrentlyCreatedFilename() string
 	}
@@ -77,7 +78,7 @@ func (bldr *Builder) SetDefinitionsByArg(r core.DefinitionsRepository) {
 // n of process. The method contains the reflected process definition (p interface{})
 // and calls it by the reflected method name.
 // This method hides specific setters (SetProcess, SetCollaboration, SetDiagram).
-func (bldr *Builder) Defaults(p interface{}, c interface{}) {
+func (bldr *Builder) Defaults(p interface{}, c *gobpmn_count.Quantities) {
 
 	// el is the interface {} of a given definition
 	el := reflect.ValueOf(&p).Elem()
