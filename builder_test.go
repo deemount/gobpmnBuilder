@@ -12,15 +12,15 @@ import (
 
 func TestReflectCounter(t *testing.T) {
 
-	type C struct{ Process int }
+	type A struct{ Process int }
 
-	counter := C{
+	counter := A{
 		Process: 1,
 	}
 
-	r := reflect.ValueOf(&counter).Elem()
-
+	r := reflect.ValueOf(&counter)
 	r1 := r.FieldByName("Process").Int()
+
 	t.Logf("result of r is %v", r1)
 
 }

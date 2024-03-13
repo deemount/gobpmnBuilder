@@ -83,8 +83,8 @@ func (bldr *Builder) Defaults(p interface{}, c interface{}) {
 	el := reflect.ValueOf(&p).Elem()
 	counter := reflect.ValueOf(&c).Elem()
 
-	proc := reflect.ValueOf(&counter).Elem()
-	numProcess := proc.FieldByName("Process")
+	// Get the number of processes
+	numProcess := counter.FieldByName("Process")
 
 	// Allocate a temporary variable with type of the struct.
 	// el.Elem() is the value contained in the interface
