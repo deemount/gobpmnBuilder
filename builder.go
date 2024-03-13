@@ -87,7 +87,7 @@ func (bldr *Builder) Defaults(p interface{}, c *gobpmn_count.Quantities) {
 	// Get the number of processes
 	//numProcess := counter.FieldByName("Process")
 
-	log.Printf("Number of processes: %+v", counter.Elem())
+	log.Printf("Number of processes: %+v", counter.Elem().FieldByName("Process").Int())
 
 	// Allocate a temporary variable with type of the struct.
 	// el.Elem() is the value contained in the interface
