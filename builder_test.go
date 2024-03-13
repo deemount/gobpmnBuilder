@@ -18,8 +18,10 @@ func TestReflectCounter(t *testing.T) {
 		Process: 1,
 	}
 
-	r := reflect.ValueOf(&counter).Elem().FieldByName("Process").Int()
-	t.Logf("result of r is %+v", r)
+	r := reflect.ValueOf(&counter).Elem()
+
+	r1 := r.FieldByName("Process").Int()
+	t.Logf("result of r is %v", r1)
 
 }
 
