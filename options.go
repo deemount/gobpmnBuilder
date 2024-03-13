@@ -7,7 +7,6 @@ type Options struct {
 	Counter     int
 	CurrentFile string
 	ModelType   string
-	// using pointer to interface and struct for more flexibel modelling
-	Def  *core.Definitions
-	Repo core.DefinitionsRepository
+	Def         *core.Definitions
+	Repo        core.DefinitionsRepository
 }
