@@ -79,8 +79,11 @@ func (bldr *Builder) SetDefinitionsByArg(r core.DefinitionsRepository) {
 // This method hides specific setters (SetProcess, SetCollaboration, SetDiagram).
 func (bldr *Builder) Defaults(p interface{}, c interface{}) {
 
-	// el is the interface {}
+	// el is the interface {} of a given definition
 	el := reflect.ValueOf(&p).Elem()
+	nums := reflect.ValueOf(&c).Elem()
+
+	log.Printf("Defaults: %+v", nums)
 
 	// Allocate a temporary variable with type of the struct.
 	// el.Elem() is the value contained in the interface
@@ -114,17 +117,8 @@ func (bldr Builder) GetCurrentlyCreatedFilename() string {
 
 // Build...
 func (bldr Builder) Build() (Builder, error) {
-
-	var err error
-
-	bldr.SetDefinitions()
-
-	// create .bpmn
-	err = bldr.ToBPMN()
-	if err != nil {
+	if err := bldr.ToBPMN(); err != nil {
 		return Builder{}, err
 	}
-
 	return bldr, nil
-
 }
