@@ -83,7 +83,7 @@ func (bldr *Builder) Defaults(p interface{}, c interface{}) {
 	el := reflect.ValueOf(&p).Elem()
 	counter := reflect.ValueOf(&c).Elem()
 
-	coll := reflect.ValueOf(&counter).Elem().FieldByName("Collaboration").Int()
+	//coll := reflect.ValueOf(&counter).Elem().FieldByName("Collaboration").Int()
 	proc := reflect.ValueOf(&counter).Elem().FieldByName("Process").Int()
 
 	// Allocate a temporary variable with type of the struct.
@@ -91,10 +91,10 @@ func (bldr *Builder) Defaults(p interface{}, c interface{}) {
 	definitions := reflect.New(el.Elem().Type()).Elem() // *core.Definitions
 	definitions.Set(el.Elem())                          // reflected process definitions el will be assigned to the core definitions
 
-	if coll == 1 {
+	/*if coll == 1 {
 		collaboration := definitions.MethodByName("SetCollaboration")
 		collaboration.Call([]reflect.Value{})
-	}
+	}*/
 
 	if proc > 0 {
 		process := definitions.MethodByName("SetProcess")
