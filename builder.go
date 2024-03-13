@@ -81,24 +81,25 @@ func (bldr *Builder) Defaults(p interface{}, c interface{}) {
 
 	// el is the interface {} of a given definition
 	el := reflect.ValueOf(&p).Elem()
-	nums := reflect.ValueOf(&c).Elem()
+	counter := reflect.ValueOf(&c).Elem()
 
-	log.Printf("Defaults2: %+v", &nums)
+	coll := reflect.ValueOf(&counter).Elem().FieldByName("Collaboration").Int()
+	proc := reflect.ValueOf(&counter).Elem().FieldByName("Process").Int()
 
 	// Allocate a temporary variable with type of the struct.
 	// el.Elem() is the value contained in the interface
 	definitions := reflect.New(el.Elem().Type()).Elem() // *core.Definitions
 	definitions.Set(el.Elem())                          // reflected process definitions el will be assigned to the core definitions
 
-	/*
-		// set collaboration, process and diagram
+	if coll == 1 {
 		collaboration := definitions.MethodByName("SetCollaboration")
 		collaboration.Call([]reflect.Value{})
+	}
 
-	*/
-
-	process := definitions.MethodByName("SetProcess")
-	process.Call([]reflect.Value{reflect.ValueOf(1)}) // r.Process represents number of processes
+	if proc > 0 {
+		process := definitions.MethodByName("SetProcess")
+		process.Call([]reflect.Value{reflect.ValueOf(proc)})
+	}
 
 	/*
 

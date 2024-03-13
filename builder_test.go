@@ -4,10 +4,24 @@ import (
 	"encoding/xml"
 	"fmt"
 	"os"
+	"reflect"
 	"testing"
 
 	"github.com/deemount/gobpmnModels/pkg/core"
 )
+
+func TestReflectCounter(t *testing.T) {
+
+	type C struct{ Process int }
+
+	counter := C{
+		Process: 1,
+	}
+
+	r := reflect.ValueOf(&counter).Elem().FieldByName("Process").Int()
+	t.Logf("result of r is %+v", r)
+
+}
 
 func TestToBPMN(t *testing.T) {
 	var err error
