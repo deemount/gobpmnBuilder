@@ -12,16 +12,11 @@ import (
 
 func TestReflectCounter(t *testing.T) {
 
-	type A struct{ Process int }
+	var A interface{}
 
-	counter := A{
-		Process: 1,
-	}
+	r := reflect.ValueOf(&A).Elem()
 
-	r := reflect.ValueOf(&counter)
-	r1 := r.FieldByName("Process").Int()
-
-	t.Logf("result of r is %v", r1)
+	t.Logf("result of r is %+v", r)
 
 }
 
