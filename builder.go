@@ -83,7 +83,7 @@ func (bldr *Builder) Defaults(p interface{}, c interface{}) {
 	el := reflect.ValueOf(&p).Elem()
 	nums := reflect.ValueOf(&c).Elem()
 
-	log.Printf("Defaults: %+v", &nums)
+	log.Printf("Defaults2: %+v", &nums)
 
 	// Allocate a temporary variable with type of the struct.
 	// el.Elem() is the value contained in the interface
