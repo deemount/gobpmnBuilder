@@ -98,10 +98,10 @@ func (bldr *Builder) Defaults(p interface{}, c interface{}) {
 		collaboration.Call([]reflect.Value{})
 	}*/
 
-	if numProcess.Int() > 0 {
-		process := definitions.MethodByName("SetProcess")
-		process.Call([]reflect.Value{reflect.ValueOf(numProcess.Int())})
-	}
+	//if numProcess.Int() > 0 {
+	process := definitions.MethodByName("SetProcess")
+	process.Call([]reflect.Value{reflect.ValueOf(1)})
+	//}
 
 	/*
 
