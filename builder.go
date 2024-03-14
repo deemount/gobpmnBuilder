@@ -85,32 +85,29 @@ func (bldr *Builder) Defaults(p interface{}, c *gobpmn_count.Quantities) {
 	counter := reflect.ValueOf(&c).Elem()
 
 	// Get the number of processes
+	numParticipants := counter.Elem().FieldByName("Participant").Int()
 	numProcess := counter.Elem().FieldByName("Process").Int()
-
-	log.Printf("Number of processes: %+v", numProcess)
 
 	// Allocate a temporary variable with type of the struct.
 	// el.Elem() is the value contained in the interface
 	definitions := reflect.New(el.Elem().Type()).Elem() // *core.Definitions
 	definitions.Set(el.Elem())                          // reflected process definitions el will be assigned to the core definitions
 
-	/*
+	if numParticipants > 0 {
 		collaboration := definitions.MethodByName("SetCollaboration")
 		collaboration.Call([]reflect.Value{})
-	}*/
+	}
 
-	//if numProcess.Int() > 0 {
-	process := definitions.MethodByName("SetProcess")
-	process.Call([]reflect.Value{reflect.ValueOf(1)})
-	//}
+	if numProcess > 0 {
+		process := definitions.MethodByName("SetProcess")
+		process.Call([]reflect.Value{reflect.ValueOf(numProcess)})
+	}
 
 	/*
-
 		Actually, diagram is decoupled. So, no func needs to be called here ...
 
 		diagram := definitions.MethodByName("SetDiagram")
 		diagram.Call([]reflect.Value{reflect.ValueOf(1)}) // 1 represents number of diagrams
-
 	*/
 }
 
