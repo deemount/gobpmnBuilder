@@ -100,7 +100,7 @@ func (bldr *Builder) Defaults(p interface{}, c *gobpmn_count.Quantities) {
 
 	if numProcess > 0 {
 		process := definitions.MethodByName("SetProcess")
-		process.Call([]reflect.Value{reflect.ValueOf(numProcess)})
+		process.Call([]reflect.Value{reflect.ValueOf(int(numProcess))})
 	}
 
 	/*
