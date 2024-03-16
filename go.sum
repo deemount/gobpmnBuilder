@@ -1,8 +1,10 @@
 github.com/deemount/gobpmnCounter v0.0.0-20240312102840-227373d7f040 h1:vMsKGBWBsdy2UEDaOO+yCG4RLjYVyoLNARopS8o1/XM=
 github.com/deemount/gobpmnCounter v0.0.0-20240312102840-227373d7f040/go.mod h1:gtlVIb4tlWVLxCZmme7ORdXFpbeVajRXKCI4KtaQ0l0=
-github.com/deemount/gobpmnModels v0.0.0-20240311093948-b01f02056cfd h1:oIgofljbjfA5zD4oVriqu6Asp0BOToPwf8G0MNmFleM=
-github.com/deemount/gobpmnModels v0.0.0-20240311093948-b01f02056cfd/go.mod h1:8HkFs9SEoVS0iCV/f6arOQesRWxSnjSO6m4e5Bk1S04=
+github.com/deemount/gobpmnModels v0.0.0-20240315195348-76e2d8110fe8 h1:GIBwEU2hQIfXphDxI6Anv3dwO4Iorp6EFMRgTFIZ3Co=
+github.com/deemount/gobpmnModels v0.0.0-20240315195348-76e2d8110fe8/go.mod h1:bv2zkkqCzzaGV5gYP3gDQfMXuqjxMBjSl9GjHFo2mY8=
 github.com/deemount/gobpmnReflection v0.0.0-20240312080001-0601dc0824b6 h1:ZRHog+R0LurHMet3bliWHEUDM4z6mTe7j/eVGocMyrs=
 github.com/deemount/gobpmnReflection v0.0.0-20240312080001-0601dc0824b6/go.mod h1:j8WCmdzEkTq/FVsWJAdoPtjTiRryLZp/WjOLcIqtt5c=
-github.com/deemount/gobpmnTypes v0.0.0-20240311093047-4625a7520eed h1:/mgi7QZhEXWgyTDig3smB/jcvo6WR3idgZx0ugzcMcc=
-github.com/deemount/gobpmnTypes v0.0.0-20240311093047-4625a7520eed/go.mod h1:Dw7Jo8/vr0DzNHNMnbwQu0JSMWm2klNdo00rcxHCzJs=
+github.com/deemount/gobpmnReflection v0.0.0-20240315112013-036495e4c08d h1:yQY4ikw/HuvVlPu3hGc0X8gntQnSbLqMnUw/nHRRCKU=
+github.com/deemount/gobpmnReflection v0.0.0-20240315112013-036495e4c08d/go.mod h1:j8WCmdzEkTq/FVsWJAdoPtjTiRryLZp/WjOLcIqtt5c=
+github.com/deemount/gobpmnTypes v0.0.0-20240315111519-43046016ad9f h1:0gux6KtY8XgrN/L9tiZ7B+wx3th7x4hBYu1+wtUkHYY=
+github.com/deemount/gobpmnTypes v0.0.0-20240315111519-43046016ad9f/go.mod h1:Dw7Jo8/vr0DzNHNMnbwQu0JSMWm2klNdo00rcxHCzJs=
