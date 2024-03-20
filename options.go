@@ -22,14 +22,20 @@ func WithPath(FilePathBPMN, FilePathJSON string) Option {
 	}
 }
 
-// WithCounter ...
-func WithCounter(filePath string) Option {
+// WithCounter reads the directory with the path to the specified files
+// and sets the number and count up for each created file. If the path is empty,
+// the default path will be used.
+func WithCounter(path ...string) Option {
 	return func(bldr *Builder) {
-		if bldr.FilePathBPMN != "" {
-			log.Printf("The path to the BPMN files is: %s\n", bldr.FilePathBPMN)
+		var filepath string
+		// check if the path is empty
+		if len(path) > 0 {
+			filepath = path[0]
+		} else {
+			filepath = bldr.FilePathBPMN
 		}
 		// reading the directory with the path to the specified files
-		files, err := os.ReadDir(filePath)
+		files, err := os.ReadDir(filepath)
 		if err != nil {
 			log.Panic(err)
 		}
@@ -42,12 +48,14 @@ func WithCounter(filePath string) Option {
 	}
 }
 
-func WithCurrentFile(filenamePrefix string) Option {
+// WithFilenamePrefix returns the filename prefix, which is used to create the file name.
+func WithFilenamePrefix(filenamePrefix string) Option {
 	return func(bldr *Builder) {
 		bldr.FilenamePrefix = filenamePrefix
 	}
 }
 
+// WithDefinitions stores the definitions repository in the builder.
 func WithDefinitions(Repo core.DefinitionsRepository) Option {
 	return func(bldr *Builder) {
 		bldr.Repo = Repo
