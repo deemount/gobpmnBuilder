@@ -43,6 +43,7 @@ func WithCounter(path ...string) Option {
 		if len(files) == 0 {
 			bldr.Counter = 1
 		} else {
+			log.Printf("Number of files in the directory: %d", len(files))
 			bldr.Counter = len(files) + 1
 		}
 	}
