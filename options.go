@@ -43,7 +43,7 @@ func WithCounter(path ...string) Option {
 		if len(files) == 0 {
 			bldr.Counter = 1
 		} else {
-			bldr.Counter = bldr.Counter + 1
+			bldr.Counter = len(files) + 1
 		}
 	}
 }
