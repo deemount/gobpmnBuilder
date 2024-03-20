@@ -1,11 +1,21 @@
 package gobpmn_builder
 
 import (
+	"errors"
 	"fmt"
 	"reflect"
 
 	gobpmn_count "github.com/deemount/gobpmnCounter"
 	"github.com/deemount/gobpmnModels/pkg/core"
+)
+
+var (
+	// Defaults
+	DefaultPathBPMN = "files/bpmn" // DefaultPathBPMN is the default path to the bpmn files
+	DefaultPathJSON = "files/json" // DefaultPathJSON is the default path to the json files
+
+	// Errors
+	ErrPathNotFound = errors.New("path not found") // ErrPathNotFound is the error for the path not found
 )
 
 type (
