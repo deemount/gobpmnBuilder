@@ -50,8 +50,8 @@ func New(opts ...Option) BuilderRepository {
 		Counter:        1,
 		FilenamePrefix: "diagram",
 		ModelType:      "human",
-		FilePathBPMN:   "files/bpmn",
-		FilePathJSON:   "files/json",
+		FilePathBPMN:   DefaultPathBPMN,
+		FilePathJSON:   DefaultPathJSON,
 		Def:            nil,
 		Repo:           nil,
 	}

@@ -11,14 +11,25 @@ import (
   Functional Options Pattern Type and Functions for the Builder
 */
 
+var (
+	DefaultPathBPMN = "files/bpmn" // DefaultPathBPMN is the default path to the bpmn files
+	DefaultPathJSON = "files/json" // DefaultPathJSON is the default path to the json files
+)
+
 // Option is a functional option type for the Builder.
 type Option = func(bldr *Builder)
 
 // WithPath ...
-func WithPath(FilePathBPMN, FilePathJSON string) Option {
+func WithPath(path ...string) Option {
 	return func(bldr *Builder) {
-		bldr.FilePathBPMN = FilePathBPMN
-		bldr.FilePathJSON = FilePathJSON
+		// check if the path is empty
+		if len(path) == 0 {
+			bldr.FilePathBPMN = DefaultPathBPMN
+			bldr.FilePathJSON = DefaultPathJSON
+		} else {
+			bldr.FilePathBPMN = path[0]
+			bldr.FilePathJSON = path[1]
+		}
 	}
 }
 
@@ -39,12 +50,13 @@ func WithCounter(path ...string) Option {
 		if err != nil {
 			log.Panic(err)
 		}
+		// get the length of the files
+		length := len(files)
 		// set number and count up for each created file
-		if len(files) == 0 {
+		if length == 0 {
 			bldr.Counter = 1
 		} else {
-			log.Printf("Number of files in the directory: %d", len(files))
-			bldr.Counter = len(files) + 1
+			bldr.Counter = length + 1
 		}
 	}
 }
