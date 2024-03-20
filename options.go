@@ -11,7 +11,7 @@ import (
   Functional Options Pattern Type and Functions for the Builder
 */
 
-// Option ...
+// Option is a functional option type for the Builder.
 type Option = func(bldr *Builder)
 
 // WithPath ...
