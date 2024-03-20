@@ -14,7 +14,7 @@ func (bldr *Builder) ToJSON() error {
 
 	// create .json file
 	currFile := bldr.GetCurrentlyCreatedFilename()
-	f, err := os.Create(bldr.FilePathJSON + currFile + ".json")
+	f, err := os.Create(bldr.FilePathJSON + "/" + currFile + ".json")
 	if err != nil {
 		return err
 	}
