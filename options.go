@@ -25,6 +25,9 @@ func WithPath(FilePathBPMN, FilePathJSON string) Option {
 // WithCounter ...
 func WithCounter(filePath string) Option {
 	return func(bldr *Builder) {
+		if bldr.FilePathBPMN != "" {
+			log.Printf("The path to the BPMN files is: %s\n", bldr.FilePathBPMN)
+		}
 		// reading the directory with the path to the specified files
 		files, err := os.ReadDir(filePath)
 		if err != nil {
