@@ -6,18 +6,20 @@ import (
 	"os"
 )
 
-// toBPMN ...
+// ToBPMN marshals the repository to a bpmn file
+// and writes the file to the file system.
+// The method returns an error if the file could not be created.
+// The method returns nil if the file was created successfully.
 func (bldr *Builder) ToBPMN() error {
 
 	var err error
 
 	// marshal xml to byte slice
-	b, _ := xml.MarshalIndent(&bldr.Options.Repo, " ", "  ")
+	b, _ := xml.MarshalIndent(&bldr.Repo, " ", "  ")
 
-	// path to bpmn files
-	path := "files/bpmn"
 	// create .bpmn file
-	f, err := os.Create(path + "/" + bldr.Options.CurrentFile + ".bpmn")
+	currFile := bldr.GetCurrentlyCreatedFilename()
+	f, err := os.Create(bldr.FilePathBPMN + "/" + currFile + ".bpmn")
 	if err != nil {
 		return err
 	}
@@ -32,12 +34,6 @@ func (bldr *Builder) ToBPMN() error {
 		return err
 	}
 	err = f.Sync()
-	if err != nil {
-		return err
-	}
-
-	// create .json
-	err = bldr.toJSON()
 	if err != nil {
 		return err
 	}

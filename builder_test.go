@@ -1,19 +1,22 @@
-package gobpmn_builder
+package gobpmn_builder_test
 
 import (
-	"encoding/xml"
-	"fmt"
-	"os"
 	"reflect"
 	"testing"
+
+	"github.com/stretchr/testify/mock"
 
 	"github.com/deemount/gobpmnModels/pkg/core"
 )
 
-func TestReflectCounter(t *testing.T) {
+// TestReflectQuantities
+func TestReflectQuantities(t *testing.T) {
 
-	type A struct{ Process int }
-	a := A{Process: 1}
+	type Quantities struct {
+		Process int
+	}
+
+	a := Quantities{Process: 1}
 
 	r := reflect.ValueOf(&a).Elem()
 	r1 := r.FieldByName("Process").Int()
@@ -22,38 +25,22 @@ func TestReflectCounter(t *testing.T) {
 
 }
 
-func TestToBPMN(t *testing.T) {
-	var err error
-	// create a new repository
-	repo := core.NewDefinitions()
-	repo.SetDefaultAttributes()
-	repo.SetID("definitions", "1234")
-	repo.SetMainElements(1)
-	proc := repo.GetProcess(0)
-	t.Logf("result of proc is %v", proc)
-	// marshal xml to byte slice
-	b, err := xml.MarshalIndent(&repo, " ", "  ")
-	if err != nil {
-		t.Errorf("expected nil, got %v", err)
-	}
-	// path to temporary bpmn files
-	path := "temp"
-	// create .bpmn file
-	f, err := os.Create(path + "/test.bpmn")
-	if err != nil {
-		t.Errorf("expected nil, got %v", err)
-	}
-	defer f.Close()
-	// add xml header
-	w := []byte(fmt.Sprintf("%v", xml.Header+string(b)))
-	// write bytes to file
-	_, err = f.Write(w)
-	if err != nil {
-		t.Errorf("expected nil, got %v", err)
-	}
-	err = f.Sync()
-	if err != nil {
-		t.Errorf("expected nil, got %v", err)
-	}
+type mockOptions struct {
+	mock.Mock
+	Counter      int                        // Counter is the number of created files
+	CurrentFile  string                     // CurrentFile is the name of the current file
+	ModelType    string                     // ModelType is the type of the model (can be human or technical)
+	FilePathBPMN string                     // FilePathBPMN is the path to the bpmn files
+	FilePathJSON string                     // FilePathJSON is the path to the json files
+	Def          *core.Definitions          // Def is the definition of the model
+	Repo         core.DefinitionsRepository // Repo is the repository of the model
+}
+
+type mockOption func(opt mockOptions) mockOptions
+
+func TestSetOptions(t *testing.T) {
+
+	opt := mockOptions{}
+	t.Logf("result of o is %+v", opt)
 
 }

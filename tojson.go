@@ -5,15 +5,16 @@ import (
 	"os"
 )
 
-// toJSON ...
-func (bldr *Builder) toJSON() error {
+// ToJSON ...
+func (bldr *Builder) ToJSON() error {
 	var err error
 
 	// marshal json to byte slice
-	b, _ := json.MarshalIndent(&bldr.Options.Repo, " ", "  ")
+	b, _ := json.MarshalIndent(&bldr.Repo, " ", "  ")
 
 	// create .json file
-	f, err := os.Create("files/json/" + bldr.Options.CurrentFile + ".json")
+	currFile := bldr.GetCurrentlyCreatedFilename()
+	f, err := os.Create(bldr.FilePathJSON + currFile + ".json")
 	if err != nil {
 		return err
 	}
