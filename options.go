@@ -31,17 +31,15 @@ func WithPath(path ...string) Option {
 		case length == 1:
 			if _, err := os.Stat(path[0]); os.IsNotExist(err) {
 				return ErrPathNotFound
-			} else {
-				bldr.FilePathBPMN = path[0]
-				bldr.FilePathJSON = DefaultPathJSON
 			}
+			bldr.FilePathBPMN = path[0]
+			bldr.FilePathJSON = DefaultPathJSON
 		case length >= 2:
 			if _, err := os.Stat(path[0]); os.IsNotExist(err) {
 				return ErrPathNotFound
-			} else {
-				bldr.FilePathBPMN = path[0]
-				bldr.FilePathJSON = path[1]
 			}
+			bldr.FilePathBPMN = path[0]
+			bldr.FilePathJSON = path[1]
 		}
 		return nil
 	}
@@ -58,9 +56,8 @@ func WithCounter(path ...string) Option {
 		if len(path) == 1 {
 			if _, err := os.Stat(path[0]); os.IsNotExist(err) {
 				return ErrPathNotFound
-			} else {
-				filepath = path[0]
 			}
+			filepath = path[0]
 		} else {
 			filepath = bldr.FilePathBPMN
 		}

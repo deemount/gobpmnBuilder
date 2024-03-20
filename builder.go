@@ -11,8 +11,11 @@ import (
 
 var (
 	// Defaults
-	DefaultPathBPMN = "files/bpmn" // DefaultPathBPMN is the default path to the bpmn files
-	DefaultPathJSON = "files/json" // DefaultPathJSON is the default path to the json files
+	DefaultCounter        = 1            // DefaultCounter is the default counter
+	DefaultFilenamePrefix = "diagram"    // DefaultFilenamePrefix is the default filename prefix
+	DefaultModelType      = "human"      // DefaultModelType is the default model type
+	DefaultPathBPMN       = "files/bpmn" // DefaultPathBPMN is the default path to the bpmn files
+	DefaultPathJSON       = "files/json" // DefaultPathJSON is the default path to the json files
 
 	// Errors
 	ErrPathNotFound = errors.New("path not found") // ErrPathNotFound is the error for the path not found
@@ -57,9 +60,9 @@ type (
 func New(opts ...Option) BuilderRepository {
 	// Set the default values
 	bldr := &Builder{
-		Counter:        1,
-		FilenamePrefix: "diagram",
-		ModelType:      "human",
+		Counter:        DefaultCounter,
+		FilenamePrefix: DefaultFilenamePrefix,
+		ModelType:      DefaultModelType,
 		FilePathBPMN:   DefaultPathBPMN,
 		FilePathJSON:   DefaultPathJSON,
 		Def:            nil,
