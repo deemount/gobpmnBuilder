@@ -18,7 +18,8 @@ var (
 	DefaultPathJSON       = "files/json" // DefaultPathJSON is the default path to the json files
 
 	// Errors
-	ErrPathNotFound = errors.New("path not found") // ErrPathNotFound is the error for the path not found
+	ErrPathNotFound      = errors.New("path not found")           // ErrPathNotFound is the error for the path not found
+	ErrEmptyFilePathBPMN = errors.New("empty file path for bpmn") // ErrEmptyFilePathBPMN is the error for the empty file path for bpmn
 )
 
 type (
@@ -57,7 +58,7 @@ type (
 // and returns the builder repository.
 // The method sets the default values and applies the options
 // to the builder.
-func New(opts ...Option) BuilderRepository {
+func New(opts ...Option) (BuilderRepository, error) {
 	// Set the default values
 	bldr := &Builder{
 		Counter:        DefaultCounter,
@@ -72,7 +73,10 @@ func New(opts ...Option) BuilderRepository {
 	for _, opt := range opts {
 		opt(bldr)
 	}
-	return bldr
+	if err := bldr.validate(); err != nil {
+		return nil, err
+	}
+	return bldr, nil
 }
 
 // SetDefinitions ...
