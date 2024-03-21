@@ -23,14 +23,19 @@ type Option = func(bldr *Builder) error
 //     and the rest of the paths will be ignored.
 //
 // The first path is the path to the bpmn files and the second path is the path to the json files.
+// Note:
+// The function uses variadic parameters. Parameters can be empty or more than one.
 func WithPath(path ...string) Option {
 	return func(bldr *Builder) error {
+
 		length := len(path)
+
 		switch true {
 		case length == 0:
 			log.Printf("No path provided. Using default path: %s", DefaultPathBPMN)
 			bldr.FilePathBPMN = DefaultPathBPMN
 			bldr.FilePathJSON = DefaultPathJSON
+
 		case length == 1:
 			if _, err := os.Stat(path[0]); os.IsNotExist(err) {
 				log.Printf("Path not found: %s", path[0])
@@ -38,6 +43,7 @@ func WithPath(path ...string) Option {
 			}
 			bldr.FilePathBPMN = path[0]
 			bldr.FilePathJSON = DefaultPathJSON
+
 		case length >= 2:
 			if _, err := os.Stat(path[0]); os.IsNotExist(err) {
 				log.Printf("Path not found: %s", path[0])
@@ -45,40 +51,52 @@ func WithPath(path ...string) Option {
 			}
 			bldr.FilePathBPMN = path[0]
 			bldr.FilePathJSON = path[1]
+
 		}
+
 		return nil
+
 	}
 }
 
 // WithCounter reads the directory with the path to the specified files
-// and sets the number and count up for each created file. If the path is empty,
-// the default path will be used. The number of files in this directory will be used
-// for all other file types.
+// and sets the number and count up for each created file.
+// Ruleset:
+//   - If the path is empty, the default path will be used.
+//   - If the path is not empty AND isn't the same like the default path, the path argument will be used.
+//   - Only the first path will be used. All other paths will be ignored.
+//
+// The number of files in this directory will be used for all other file types.
+// Note:
+// The function uses variadic parameters. Parameters can be empty or more than one.
 func WithCounter(path ...string) Option {
 	return func(bldr *Builder) error {
+
 		var filepath string
-		// check if the path is empty
-		if len(path) == 1 {
-			if _, err := os.Stat(path[0]); os.IsNotExist(err) {
-				return ErrPathNotFound
-			}
+
+		// check if variadic parameter has a length of 1 and is not the default path
+		if len(path) == 1 && path[0] != bldr.FilePathBPMN {
 			filepath = path[0]
 		} else {
 			filepath = bldr.FilePathBPMN
 		}
+
 		// reading the directory with the path to the specified files
 		files, err := os.ReadDir(filepath)
 		if err != nil {
 			log.Panic(err)
 		}
+
 		// get the length of the files
 		length := len(files)
+
 		// set number and count up for each created file
 		if length == 0 {
 			bldr.Counter = 1
 		} else {
 			bldr.Counter = length + 1
 		}
+
 		return nil
 	}
 }
