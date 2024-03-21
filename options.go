@@ -15,11 +15,12 @@ import (
 type Option = func(bldr *Builder) error
 
 // WithPath sets the path to the bpmn and json files.
-// If the length of path is empty, the default path will be used.
-// If the length of path is 1, the path to the bpmn files will be set.
-// If the length of path is 2, the path to the bpmn and json files will be set.
-// If the length of path is greater than 2, the path to the bpmn and json files will be set
-// and the rest of the paths will be ignored.
+//   - If the length of path is empty, the default path will be used.
+//   - If the length of path is 1, the path to the bpmn files will be set.
+//   - If the length of path is 2, the path to the bpmn and json files will be set.
+//   - If the length of path is greater than 2, the path to the bpmn and json files will be set
+//     and the rest of the paths will be ignored.
+//
 // The first path is the path to the bpmn files and the second path is the path to the json files.
 func WithPath(path ...string) Option {
 	return func(bldr *Builder) error {
