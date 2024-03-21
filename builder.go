@@ -45,8 +45,8 @@ type (
 	// bpmn file in the particular directory.
 	Builder struct {
 		Counter        int                        // Counter is the number of created files
-		FilenamePrefix string                     // CurrentFile is the name of the current file
-		ModelType      string                     // ModelType is the type of the model (can be human or technical)
+		FilenamePrefix string                     // FilenamePrefix is a part of the name of the current file
+		ModelType      string                     // ModelType is the type of the model
 		FilePathBPMN   string                     // FilePathBPMN is the path to the bpmn files
 		FilePathJSON   string                     // FilePathJSON is the path to the json files
 		Def            *core.Definitions          // Def is the definition of the model
@@ -93,7 +93,9 @@ func (bldr *Builder) SetDefinitionsByArg(r core.DefinitionsRepository) {
 // and calls the main elements to set the maps, including process parameters
 // n of process. The method contains the reflected process definition (p interface{})
 // and calls it by the reflected method name.
-// Note: This method hides specific setters (SetProcess, SetCollaboration, SetDiagram).
+//
+// Note:
+// This method hides specific setters (SetProcess, SetCollaboration, SetDiagram).
 func (bldr *Builder) Defaults(p interface{}, c *gobpmn_count.Quantities) {
 
 	// el is the interface {} of a given definition

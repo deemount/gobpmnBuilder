@@ -84,7 +84,7 @@ func WithCounter(path ...string) Option {
 		// reading the directory with the path to the specified files
 		files, err := os.ReadDir(filepath)
 		if err != nil {
-			log.Panic(err)
+			return err
 		}
 
 		// get the length of the files

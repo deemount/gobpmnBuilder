@@ -1,10 +1,10 @@
 # gobpmnBuilder
 
-**Note:** This module is under construction
+gobpmnBuilder is a tool for reading and creating business process models in various formats, such as XML or JSON. It is the last of all modules in the gobpmn network that can be called.
 
 ## Wiki
 
-The [documentation](https://github.com/deemount/gobpmnBuilder/wiki) is now written in the wiki of the respective module
+Read the [documentation](https://github.com/deemount/gobpmnBuilder/wiki)
 
 **Start here** [gobpmn](https://github.com/deemount/gobpmn)
 
