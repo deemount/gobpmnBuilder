@@ -15,6 +15,7 @@ import (
 type Option = func(bldr *Builder) error
 
 // WithPath sets the path to the bpmn and json files.
+// Ruleset:
 //   - If the length of path is empty, the default path will be used.
 //   - If the length of path is 1, the path to the bpmn files will be set.
 //   - If the length of path is 2, the path to the bpmn and json files will be set.
