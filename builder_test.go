@@ -5,6 +5,13 @@ import (
 	"testing"
 )
 
+var (
+	// Defaults
+	DefaultFiletestPath     = "temp"
+	DefaultFiletestNameBPMN = "test.bpmn"
+	DefaultFiletestNameJSON = "test.json"
+)
+
 // TestReflectQuantities ...
 func TestReflectQuantities(t *testing.T) {
 

@@ -1,15 +1,14 @@
 package gobpmn_builder_test
 
 import (
-	"encoding/xml"
-	"fmt"
+	"encoding/json"
 	"os"
 	"testing"
 
 	"github.com/deemount/gobpmnModels/pkg/core"
 )
 
-func TestToBPMN(t *testing.T) {
+func TestToJSON(t *testing.T) {
 	var err error
 
 	// create a new repository
@@ -19,26 +18,23 @@ func TestToBPMN(t *testing.T) {
 	repo.SetMainElements(1)
 
 	// marshal xml to byte slice
-	b, err := xml.MarshalIndent(&repo, " ", "  ")
+	b, err := json.MarshalIndent(&repo, " ", "  ")
 	if err != nil {
 		t.Errorf("expected nil, got %v", err)
 	}
 
 	// create .bpmn file
-	f, err := os.Create(DefaultFiletestPath + "/test.bpmn")
+	f, err := os.Create(DefaultFiletestPath + "/test.json")
 	if err != nil {
 		t.Errorf("expected nil, got %v", err)
 	}
 	defer f.Close()
 
-	// add xml header
-	w := []byte(fmt.Sprintf("%v", xml.Header+string(b)))
 	// write bytes to file
-	_, err = f.Write(w)
+	_, err = f.Write(b)
 	if err != nil {
 		t.Errorf("expected nil, got %v", err)
 	}
-
 	err = f.Sync()
 	if err != nil {
 		t.Errorf("expected nil, got %v", err)
