@@ -1,7 +1,6 @@
 package gobpmn_builder
 
 import (
-	"log"
 	"os"
 
 	"github.com/deemount/gobpmnModels/pkg/core"
@@ -32,13 +31,11 @@ func WithPath(path ...string) Option {
 
 		switch true {
 		case length == 0:
-			log.Printf("No path provided. Using default path: %s", DefaultPathBPMN)
 			bldr.FilePathBPMN = DefaultPathBPMN
 			bldr.FilePathJSON = DefaultPathJSON
 
 		case length == 1:
 			if _, err := os.Stat(path[0]); os.IsNotExist(err) {
-				log.Printf("Path not found: %s", path[0])
 				return ErrPathNotFound
 			}
 			bldr.FilePathBPMN = path[0]
@@ -46,7 +43,6 @@ func WithPath(path ...string) Option {
 
 		case length >= 2:
 			if _, err := os.Stat(path[0]); os.IsNotExist(err) {
-				log.Printf("Path not found: %s", path[0])
 				return ErrPathNotFound
 			}
 			bldr.FilePathBPMN = path[0]
