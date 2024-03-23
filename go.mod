@@ -1,6 +1,6 @@
 module github.com/deemount/gobpmnBuilder
 
-go 1.21.7
+go 1.22
 
 require (
 	github.com/deemount/gobpmnCounter v0.0.0-20240312102840-227373d7f040
