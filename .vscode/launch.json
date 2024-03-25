@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "TestReflectQuantities",
+      "type": "go",
+      "request": "launch",
+      "mode": "test",
+      "program": "${workspaceFolder}",
+      "showLog": true,
+      "args": ["-test.v", "^TestReflectQuantities$"]
+    },
+    {
+        "name": "TestToBPMN",
+        "type": "go",
+        "request": "launch",
+        "mode": "test",
+        "program": "${workspaceFolder}",
+        "showLog": true,
+        "args": ["-test.v", "^TestToBPMN$"]
+    },
+    {
+        "name": "TestToJSON",
+        "type": "go",
+        "request": "launch",
+        "mode": "test",
+        "program": "${workspaceFolder}",
+        "showLog": true,
+        "args": ["-test.v", "^TestToJSON$"]
+    }
+  ]
+}

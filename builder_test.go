@@ -3,6 +3,8 @@ package gobpmn_builder_test
 import (
 	"reflect"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 var (
@@ -12,18 +14,18 @@ var (
 	DefaultFiletestNameJSON = "test.json"
 )
 
+type TestQuantities struct {
+	Process int
+}
+
 // TestReflectQuantities ...
 func TestReflectQuantities(t *testing.T) {
-
-	type Quantities struct {
-		Process int
-	}
-
-	a := Quantities{Process: 1}
-
-	r := reflect.ValueOf(&a).Elem()
-	r1 := r.FieldByName("Process").Int()
-
-	t.Logf("result of r is %+v", r1)
-
+	t.Run("TestReflectQuantities()",
+		func(t *testing.T) {
+			want := 1
+			q := TestQuantities{Process: 1}
+			r := reflect.ValueOf(&q).Elem()
+			r1 := r.FieldByName("Process").Int()
+			assert.Equal(t, want, int(r1), "want %v, got %v", want, r1)
+		})
 }
