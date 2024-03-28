@@ -36,6 +36,7 @@ type (
 		ToBPMN() error // Sets the bpmn file
 		ToJSON() error // Sets the json file
 		GetCurrentlyCreatedFilename() string
+		GetCurrentlyCreatedFile() string
 		Build() (Builder, error)
 	}
 
