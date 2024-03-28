@@ -33,10 +33,10 @@ type (
 		SetDefinitions()
 		SetDefinitionsByArg(r core.DefinitionsRepository)
 		Defaults(p interface{}, c *gobpmn_count.Quantities)
-		ToBPMN() error // Sets the bpmn file
-		ToJSON() error // Sets the json file
-		GetCurrentlyCreatedFilename() string
-		GetCurrentlyCreatedFile() string
+		ToBPMN() error                       // Sets the bpmn file
+		ToJSON() error                       // Sets the json file
+		GetCurrentlyCreatedFilename() string // Gets the current file without path
+		GetCurrentlyCreatedFile() string     // Gets the current file with path
 		Build() (Builder, error)
 	}
 
