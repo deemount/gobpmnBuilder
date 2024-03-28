@@ -141,7 +141,7 @@ func (bldr Builder) GetCurrentlyCreatedFilename() string {
 // It is a helper method to get the current bpmn filename with path, which
 // relies on the same instance
 func (bldr Builder) GetCurrentlyCreatedFile() string {
-	return fmt.Sprintf("%s/%s_%d", bldr.FilePathBPMN, bldr.FilenamePrefix, bldr.Counter)
+	return fmt.Sprintf("%s/%s_%d.bpmn", bldr.FilePathBPMN, bldr.FilenamePrefix, bldr.Counter)
 }
 
 // Build builds the bpmn and json files and returns the builder
